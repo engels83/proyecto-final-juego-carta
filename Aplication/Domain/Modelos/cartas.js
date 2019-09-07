@@ -1,0 +1,24 @@
+//1. importar librerias mongoose
+const mongoose = require("mongoose");
+//const itemHandler = require ("../Handlers/cartaHandler");
+
+//2. obtener objeto Schena desde mongoose
+
+const {Schema} = mongoose; //acceder a la clase schema de mongoose
+
+// 3. crear esquema tipo mongoSchema
+
+const mongoSchema = new Schema({
+    signo: String,
+    valor: Number,
+    imagen: String,
+    color: String,
+});
+
+//linkear  conectar el mongo esquema con un modelo cdocument de mongodb
+
+const Carta = mongoose.model("cartas", mongoSchema);  
+
+//5 exportar el componente Carta
+
+module.exports = Cartas;
