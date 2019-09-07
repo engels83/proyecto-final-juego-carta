@@ -27,13 +27,14 @@ params signo, valor imagen, color
 
 router.post("/add", async (req, res)=>{
     try{
-    const result = await Carta.addListener(
+        console.log(req.body);
+    const result = await Carta.add(
         req.body.signo,
         req.body.valor,
         req.body.imagen,
         req.body.color
     );
-    res.status(200).json
+    res.status(200).json(result);
 
 }catch (error){
     res.status(500).json({message: error.message});
