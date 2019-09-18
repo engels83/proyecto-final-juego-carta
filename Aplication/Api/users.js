@@ -9,37 +9,28 @@ const router = express.Router();
 const User = require("../Domain/Models/user");
 
 router.post("/registro", async (req, res) => {
-    try {
-      console.log(req.body);
-      const result = await User.register(
-        req.body.userName,
-        req.body.email,
-        req.body.password
-      );
+  try {
+    // console.log(req.body);
+    const result = await User.register(
+      req.body.userName,
+      req.body.email,
+      req.body.password
+    );
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
+router.post("/login", async (req, res) => {
+  try {
+    // console.log(req.body);
+    const errorMessage = await User.login(req.body.correo, req.body.password);
+    if (errorMessage.status == 200) res.status(200).json(errorMessage.message);
+    res.status(400).json(errorMessage.message);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
-
-      res.status(200).json(result);
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  });
-
-
-  router.post("/login", async (req, res) => {
-    try {
-      console.log(req.body);
-      const result = await User.login(
-        req.body.correo,
-        req.body.password
-      );
-
-
-
-      res.status(200).json(result);
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  });
-  
-  module.exports = router;
+module.exports = router;

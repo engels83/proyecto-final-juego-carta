@@ -5,9 +5,9 @@ class UserHandler {
   static async register(userName, email, password) {
     let passwordHash = md5(password);
     const result = await this.create({
-      userName,
-      email,
-      passwordHash
+      nombre: userName,
+      correo: email,
+      password: passwordHash
     });
 
     return result;
@@ -18,14 +18,17 @@ class UserHandler {
     // 1. buscar el registo por email
     let registro = await this.findOne({ correo });
 
-    let errorMessage = "Usuario o password no coinciden";
+    let errorMessage = {
+      message: "Usuario o password no coinciden",
+      status: 400
+    };
     // 1.2 si obtengo el registro, comparo los hash
-    if (!registro) {
+    if (registro) {
       // si los hash coinciden, retorno el nombre del usuario
-      if (md5(password) === registro.password) {
-        return registro.nombre;
+      if (md5(password) == registro.password) {
+        errorMessage.message = registro.nombre;
+        errorMessage.status = 200;
       }
-      return errorMessage;
     }
     return errorMessage;
   }
