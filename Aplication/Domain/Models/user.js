@@ -1,3 +1,5 @@
+const userHandler = require("../Handlers/userHandler");
+
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
@@ -20,6 +22,8 @@ const MongoSchema = new Schema({
   }
 
 });
+
+MongoSchema.loadClass(userHandler);
 
 const Usuario = mongoose.model("users", mongoSchema);  
 

@@ -2,6 +2,8 @@
 const mongoose = require("mongoose");
 const cartaHandler = require ("../Handlers/cartaHandler");//importar la cartasHandler
 
+
+
 //2. obtener objeto Schena desde mongoose
 
 const {Schema} = mongoose; //acceder a la clase schema de mongoose
