@@ -3,7 +3,7 @@
 //1. Crear una clase que agrupe todads las funciones hanclers
 
 class cartaHandler{
-    //traer una lista de items
+    //traer una lista de cartas
     static async list(){
         const cartas = await this.find();
         return {cartas};

@@ -15,9 +15,9 @@ const Carta = require("../Domain/Models/cartas");
 GET: obtiene la liasta de todas las cartas
 */
 
-router.get("/",async(req, res)=>{
-    const cartas = await Carta.list();//obtiene toda la coleccion de cartas
-    res.status(200).json(cartas);//response manda un status 200 (todo esta bien), status 400(problemas de usuario), status 500(servidor
+router.get("/", async (req, res) => {
+  const cartas = await Carta.list(); //obtiene toda la coleccion de cartas
+  res.status(200).json(cartas); //response manda un status 200 (todo esta bien), status 400(problemas de usuario), status 500(servidor
 });
 
 /*
@@ -25,20 +25,19 @@ POST: Guarda una carta en la bd
 params signo, valor imagen, color
 */
 
-router.post("/add", async (req, res)=>{
-    try{
-        console.log(req.body);
+router.post("/add", async (req, res) => {
+  try {
+    console.log(req.body);
     const result = await Carta.add(
-        req.body.signo,
-        req.body.valor,
-        req.body.imagen,
-        req.body.color
+      req.body.signo,
+      req.body.valor,
+      req.body.imagen,
+      req.body.color
     );
     res.status(200).json(result);
-
-}catch (error){
-    res.status(500).json({message: error.message});
-}
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
 module.exports = router;

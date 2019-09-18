@@ -70,17 +70,19 @@
         let color = $("#color").val();
         //alert(`${signo} ${valor} ${imagen} ${color}`);
 
+        let post = {
+          signo: signo,
+          valor: valor,
+          imagen: imagen,
+          color: color
+        };
 
         //POST
         $.ajax({
-          url: "api/v1/cartas/add",
           method: "POST",
-          data: {
-            signo: signo,
-            valor: valor,
-            imagen: imagen,
-            color: color
-          },
+          url: "api/v1/cartas/add",
+          data: post,
+          dataType: "JSON",
           success: (data) => {
             console.log(data);
           },
@@ -89,6 +91,7 @@
           }
 
         });
+        
 
       });
 
