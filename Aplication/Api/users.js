@@ -26,10 +26,13 @@ router.post("/login", async (req, res) => {
   try {
     // console.log(req.body);
     const errorMessage = await User.login(req.body.correo, req.body.password);
-    if (errorMessage.status == 200) res.status(200).json(errorMessage.message);
-    res.status(400).json(errorMessage.message);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+    if (errorMessage.status == 200) {
+      res.status(200).json(errorMessage);
+    } else {
+      res.status(400).json(errorMessage.message);
+    }
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
 

@@ -26,7 +26,8 @@ class UserHandler {
     if (registro) {
       // si los hash coinciden, retorno el nombre del usuario
       if (md5(password) == registro.password) {
-        errorMessage.message = registro.nombre;
+        errorMessage.message = "Success";
+        errorMessage["auth"] = { user: registro.nombre, id: registro._id };
         errorMessage.status = 200;
       }
     }
