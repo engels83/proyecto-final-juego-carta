@@ -55,6 +55,17 @@
 
     <script>
       $(document).ready(() => {
+        // validar que ya esta autenticado
+        let authString = localStorage.getItem("auth");
+        if (authString) {
+          let auth = JSON.parse(authString);
+
+          // validar que ya esta autenticado
+          if (auth.user != "" || auth.id != "") {
+            location.href = "/";
+          }
+        }
+
         $("#ingresar").click(() => {
           //Validaciones
 
@@ -79,7 +90,11 @@
                 data: post,
                 dataType: "JSON",
                 success: data => {
-                  console.log(data);
+                  // guardar auth en localStorage
+                  localStorage.setItem("auth", JSON.stringify(data.auth));
+
+                  // redirect to home / profile
+                  location.href = "/";
                 },
                 error: error => {
                   console.log(error);
