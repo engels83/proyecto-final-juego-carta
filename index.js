@@ -58,6 +58,14 @@ server.get("/", (req, res) => {
 server.get("/admin", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/Administration/admin.html"));
 });
+
+server.get("/registro", (req, res) => {
+  res.sendFile(path.join(__dirname, "./views/auth/register.html"));
+});
+
+server.get("/login", (req, res) => {
+  res.sendFile(path.join(__dirname, "./views/auth/login.html"));
+});
 //importar el channels
 
 /*const channels = require ("./Aplication");
