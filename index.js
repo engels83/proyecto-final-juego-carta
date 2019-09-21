@@ -1,12 +1,14 @@
 //1. obtener importar la libreria express
-const express = require("express");
+const express = require("express")();
+
+const http = require("http").Server(express);
 
 const mongoose = require("mongoose");
 
 const bodyParser = require("body-parser");
 
-//1.1 donde necesitamos el http de node js como server
-//const server = require("http").createServer(app); //importar libreria http
+//1.1 donde necesitamos el http de node js como express
+//const express = require("http").createexpress(app); //importar libreria http
 
 //x importar la api
 const api = require("./Aplication/Api/");
@@ -25,11 +27,10 @@ const options = {
 //usar path para publicar html
 const path = require("path");
 
-//2. instanciar el servidor express
-const server = express();
+
 
 //2.1 pasarle los atributos de servidor http
-//http.createServer(app);
+//http.createexpress(app);
 
 //3. crear el puerto
 
@@ -40,38 +41,38 @@ mongoose.connect(process.env.MONGO_URL, options);
 
 //x6 usar middleware para interpretar json
 
-server.use(express.json());
-server.use(bodyParser.urlencoded({ extended: false }));
-server.use(bodyParser.json());
+express.use(require("express").json());
+express.use(bodyParser.urlencoded({ extended: false }));
+express.use(bodyParser.json());
 
-//x7 pasar server hacia metodo api
-api(server);
+//x7 pasar express hacia metodo api
+api(express);
 
 // 4. crear un metodo GET inicial
 
-server.get("/", (req, res) => {
+express.get("/", (req, res) => {
   res.end("Hola desde web sockets!");
 
   //res.sendFile(path.join(__dirname,"./views/index.html"));
 });
 
-server.get("/admin", (req, res) => {
+express.get("/admin", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/Administration/admin.html"));
 });
 
-server.get("/registro", (req, res) => {
+express.get("/registro", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/auth/register.html"));
 });
 
-server.get("/login", (req, res) => {
+express.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/auth/login.html"));
 });
 //importar el channels
 
 /*const channels = require ("./Aplication");
-channels(server);*/
+channels(express);*/
 
 //5. crear un listener de; servidor
-server.listen(port, () => {
+http.listen(port, () => {
   console.log("servidor inicalizado en http://localhost:" + port);
 });
