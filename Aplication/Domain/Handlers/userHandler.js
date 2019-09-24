@@ -33,6 +33,21 @@ class UserHandler {
     }
     return errorMessage;
   }
+
+  static async isAuth(auth) {
+    if (!auth) return false;
+
+    if (auth.user == "" || auth.id == "") return false;
+
+    try {
+      let result = await this.findOne({ nombre: auth.user, _id: auth.id });
+      if (!result) return false;
+
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 }
 
 module.exports = UserHandler;
