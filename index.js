@@ -30,6 +30,7 @@ express.use(bodyParser.json());
 api(express);
 
 // routes system
+express.set('view engine', 'pug');
 viewRoutes(express);
 
 //importar el channels

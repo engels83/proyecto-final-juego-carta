@@ -2,8 +2,8 @@ const path = require("path");
 
 const viewRoutes = express => {
   express.get("/", (req, res) => {
-    res.end("Hola desde web sockets!");
-
+    //res.end("Hola desde web sockets!");
+    res.render("index", { title: "hola", message: "coco" });
     //res.sendFile(path.join(__dirname,"./views/index.html"));
   });
 
