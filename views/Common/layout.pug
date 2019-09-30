@@ -1,5 +1,13 @@
 block head
     include head.pug
-body(id="page-top")
+body(id="page-top")   
+
+    include navigation.pug
+
+    block header
+
+    include footer.pug
+
     block scripts
         include scripts.pug
+    

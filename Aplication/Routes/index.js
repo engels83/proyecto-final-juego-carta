@@ -3,7 +3,7 @@ const path = require("path");
 const viewRoutes = express => {
   express.get("/", (req, res) => {
     //res.end("Hola desde web sockets!");
-    res.render("index", { title: "hola", message: "coco" });
+    res.render("index", { title: "Play ♠ _31", message: "coco" });
     //res.sendFile(path.join(__dirname,"./views/index.html"));
   });
 

@@ -1,2 +1,23 @@
-extends layout.pug
+extends ./Common/layout.pug
+block header
+    header(class="masthead bg-primary text-white text-center")
+        div(class="container d-flex align-items-center flex-column")
+        img(class="masthead-avatar mb-5", src="static/img/logo.png", alt="_31 logo")
+        h1(class="masthead-heading text-uppercase mb-0") Play ♠ _31
+
+        div(class="divider-custom divider-light")
+            div(class="divider-custom-line")
+            div(class="divider-custom-icon")
+                i(class="fas fa-star")
+            div(class="divider-custom-line")
+
+        p(class="masthead-subheading font-weight-light mb-0") Join, share and play with your friends
+
+    section(class="page-section portfolio", id="portfolio")
+        div(class="container")
+            h2(class="page-section-heading text-center text-uppercase text-secondary mb-0") Hall of Fame        
+            div(class="divider-custom")
+                div(class="divider-custom-line")
+                div(class="divider-custom-icon") ♣                    
+                div(class="divider-custom-line")
 
