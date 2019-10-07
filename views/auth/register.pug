@@ -1,0 +1,38 @@
+extends ../Common/layout
+
+block header
+    header(class="masthead bg-primary text-white text-center")
+
+block content
+    section(class="page-section" id="contact")
+        div(class="container")
+            h2(class="page-section-heading text-center text-uppercase text-secondary mb-0") Register
+
+            div(class="row")
+                div(class="col-lg-8 mx-auto")
+                    form(name="registerForm", id="contactForm")
+                        div(class="control-group")
+                            div(class="form-group floating-label-form-group controls mb-0 pb-2")
+                                label nickname
+                                input(type="text", class="form-control", id="nickname", placeholder="Nickname", required="required", data-validation-required-message="Please enter your Nickname.")                                
+                                p(class="help-block text-danger", id="nickname-msg-validator")
+                        div(class="control-group")
+                            div(class="form-group floating-label-form-group controls mb-0 pb-2")
+                                label email
+                                input(type="email", class="form-control", id="email", placeholder="Email", required="required", data-validation-required-message="Please enter your email.")
+                                p(class="help-block text-danger", id="email-msg-validator")
+                        div(class="control-group")
+                            div(class="form-group floating-label-form-group controls mb-0 pb-2")
+                                label password
+                                input(type="password", class="form-control", id="password", placeholder="Password", required="required", data-validation-required-message="Please enter your password.")
+                                p(class="help-block text-danger", id="password-msg-validator")
+                        div(class="control-group")
+                            div(class="form-group floating-label-form-group controls mb-0 pb-2")
+                                label repeat password
+                                input(type="password", class="form-control", id="repeat-password", placeholder="Repeat Password", required="required", data-validation-required-message="Please repeat your password.")                                
+                        br
+                        div(class="success")
+                        div(class="form-group")
+                            button(type="button", class="btn btn-primary btn-xl", id="register") Register
+block scripts
+    script(src="static/js/application/controllers/register-controller.js")    
