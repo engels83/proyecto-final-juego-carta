@@ -3,6 +3,7 @@ const express = require("express")();
 const http = require("http").Server(express);
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const path = require("path");
 const api = require("./Aplication/Api/");
 const viewRoutes = require("./Aplication/Routes");
 require("dotenv").config();
@@ -29,7 +30,11 @@ express.use(bodyParser.json());
 //x7 pasar express hacia metodo api
 api(express);
 
+// public assets
+express.use("/static", require("express").static("public"));
+
 // routes system
+express.set("view engine", "pug");
 viewRoutes(express);
 
 //importar el channels
