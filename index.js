@@ -6,6 +6,9 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const api = require("./Aplication/Api/");
 const viewRoutes = require("./Aplication/Routes");
+
+const createDefaults = require("./Aplication/Domain/Helpers/createDefaults");
+
 require("dotenv").config();
 
 //x4 crear las configuraciones de bd
@@ -36,6 +39,9 @@ express.use("/static", require("express").static("public"));
 // routes system
 express.set("view engine", "pug");
 viewRoutes(express);
+
+// create defaults
+createDefaults();
 
 //importar el channels
 
