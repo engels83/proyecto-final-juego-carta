@@ -17,7 +17,7 @@ const routine = async () => {
   const pushRolesData = async () => {
     let counter = 0;
     await asyncForEach(rolesToAdd, async role => {
-      let result = await rolesModel.add(role.name, role.descriptio);
+      let result = await rolesModel.add(role.name, role.description);
       if (result.status == 200) counter++;
     });
     return counter;
